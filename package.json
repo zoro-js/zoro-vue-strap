@@ -1,0 +1,54 @@
+{
+  "name": "zoro-vue-strap",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/vue-strap.js",
+  "scripts": {
+    "env": "env",
+    "clean": "run-p -lns clean:*",
+    "clean:css": "rimraf dist/css",
+    "clean:js": "rimraf dist/js",
+    "clean:log": "rimraf logs/*.log",
+    "lint": "eslint --color . ; exit 0",
+    "build": "run-p -lns build:js build:css",
+    "build:favicon": "node build/favicon.js",
+    "build:css": "postcss --config node_modules/zoro-kit/build/postcss.js",
+    "build:js": "webpack --config webpack.config.js",
+    "build:js:stats": "webpack --config node_modules/zoro-kit/webpack.config.js --profile --json > dist/webpack-stats.json",
+    "watch": "run-p watch:*",
+    "-watch:css": "npm run build:css --silent -- --watch",
+    "watch:js": "npm run build:js --silent -- --watch",
+    "-watch:lint": "watch 'npm run lint' -du --interval=0.25 --ignoreDirectoryPattern='/third|submodule|dist|node_modules/i' --filter=build/watchFilter.eslint.js",
+    "dev": "npm run watch",
+    "dev:nosm": "cross-env NO_SOURCE_MAP=true npm run dev",
+    "preprod": "npm run clean",
+    "prod": "run-p prod:*",
+    "prod:js": "cross-env NODE_ENV=production npm run build:js",
+    "-prod:css": "cross-env NODE_ENV=production npm run build:css",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "puer & npm run dev",
+    "koa": "cross-env PORT=4000 DEBUG=app*,-app:responseTime,zoro-log node server/require.js",
+    "pm2": "pm2 start bin/pm2.yaml",
+    "pm2:stop": "pm2 stop bin/pm2.yaml",
+    "prepm2:test": "npm run prod",
+    "pm2:test": "pm2 start bin/pm2-test.yaml",
+    "pm2:test:stop": "pm2 stop bin/pm2-test.yaml",
+    "prepm2:prod": "npm run prod",
+    "pm2:prod": "npm run pm2 -- --env production",
+    "pm2:prod:stop": "npm run pm2:stop"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zoro-js/zoro-vue-strap.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zoro-js/zoro-vue-strap/issues"
+  },
+  "homepage": "https://github.com/zoro-js/zoro-vue-strap#readme",
+  "devDependencies": {
+    "zoro-kit": "0.0.43",
+    "zoro-kit-vue": "0.0.4"
+  }
+}
