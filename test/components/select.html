@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+    <meta http-equiv='x-ua-compatible' content='ie=edge'>
+    <title>Select</title>
+    <link rel='stylesheet' href='../../node_modules/bootstrap/dist/css/bootstrap.css'>
+  </head>
+  <body>
+    <div id='app'></div>
+    <script src='../../node_modules/vue/dist/vue.js'></script>
+    <script src='../../dist/vue-strap.js'></script>
+    <script>
+      Vue.use(VueStrap)
+      window.app = new Vue({
+        el: '#app',
+        template: '<div><Select :options="options" v-model="selectedOption"></Select></div>',
+        data: {
+          selectedOption: null,
+          options: [
+            {
+              value: 1,
+              text: '1'
+            },
+            {
+              value: 2,
+              text: '2'
+            },
+            {
+              value: 3,
+              text: '3'
+            }
+          ]
+        },
+        watch: {
+          selectedOption () {
+            console.log(this.selectedOption.text)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

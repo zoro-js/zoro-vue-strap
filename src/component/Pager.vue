@@ -31,7 +31,7 @@
           </li>
         </template>
         <template v-else>
-          <li v-for='i of size' class='page-item' @class='{active:current===i}'>
+          <li v-for='i of size' class='page-item' :class='{active:current===i}'>
             <a href='javascript:void(0)' class='page-link' @click='nav(i)'>{{i}}</a>
           </li>
         </template>

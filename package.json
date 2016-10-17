@@ -1,14 +1,15 @@
 {
   "name": "zoro-vue-strap",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
-  "main": "dist/vue-strap.js",
+  "main": "dist/vue-strap.min.js",
   "scripts": {
     "env": "env",
     "clean": "run-p -lns clean:*",
     "clean:css": "rimraf dist/css",
     "clean:js": "rimraf dist/js",
     "clean:log": "rimraf logs/*.log",
+    "clean-dist": "rimraf dist",
     "lint": "eslint --color . ; exit 0",
     "build": "run-p -lns build:js build:css",
     "build:favicon": "node build/favicon.js",
@@ -21,7 +22,7 @@
     "-watch:lint": "watch 'npm run lint' -du --interval=0.25 --ignoreDirectoryPattern='/third|submodule|dist|node_modules/i' --filter=build/watchFilter.eslint.js",
     "dev": "npm run watch",
     "dev:nosm": "cross-env NO_SOURCE_MAP=true npm run dev",
-    "preprod": "npm run clean",
+    "preprod": "npm run clean-dist",
     "prod": "run-p prod:*",
     "prod:js": "cross-env NODE_ENV=production npm run build:js",
     "-prod:css": "cross-env NODE_ENV=production npm run build:css",
@@ -48,7 +49,11 @@
   },
   "homepage": "https://github.com/zoro-js/zoro-vue-strap#readme",
   "devDependencies": {
+    "bootstrap": "^4.0.0-alpha.4",
     "zoro-kit": "0.0.43",
     "zoro-kit-vue": "0.0.4"
+  },
+  "dependencies": {
+    "date-fns": "^1.6.0"
   }
 }

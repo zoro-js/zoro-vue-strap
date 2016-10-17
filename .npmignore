@@ -1,3 +1,3 @@
 **/*
-!dist
-!package.json
+!dist/vue-strap.min.*
+!src/**/*
