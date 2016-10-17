@@ -1,8 +1,8 @@
 {
   "name": "zoro-vue-strap",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
-  "main": "dist/vue-strap.min.js",
+  "main": "dist/vue-strap.js",
   "scripts": {
     "env": "env",
     "clean": "run-p -lns clean:*",
@@ -27,6 +27,7 @@
     "prod:js": "cross-env NODE_ENV=production npm run build:js",
     "-prod:css": "cross-env NODE_ENV=production npm run build:css",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm run prod",
     "server": "puer & npm run dev",
     "koa": "cross-env PORT=4000 DEBUG=app*,-app:responseTime,zoro-log node server/require.js",
     "pm2": "pm2 start bin/pm2.yaml",
