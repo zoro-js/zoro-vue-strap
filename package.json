@@ -1,6 +1,6 @@
 {
   "name": "zoro-vue-strap",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/vue-strap.js",
   "scripts": {

@@ -15,27 +15,27 @@
       Vue.use(VueStrap)
       window.app = new Vue({
         el: '#app',
-        template: '<div><Select :options="options" v-model="selectedOption"></Select></div>',
+        template: '<div><Select :options="options" v-model="selected"></Select></div>',
         data: {
-          selectedOption: null,
+          selected: null,
           options: [
             {
               value: 1,
-              text: '1'
+              text: 'one'
             },
             {
               value: 2,
-              text: '2'
+              text: 'two'
             },
             {
               value: 3,
-              text: '3'
+              text: 'three'
             }
           ]
         },
         watch: {
-          selectedOption () {
-            console.log(this.selectedOption.text)
+          selected () {
+            console.log(this.selected)
           }
         }
       })

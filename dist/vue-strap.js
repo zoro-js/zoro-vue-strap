@@ -499,13 +499,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = {
 	  props: {
 	    value: null,
-	    multiple: {
-	      type: Boolean,
-	      'default': false
-	    },
 	    options: {
 	      type: Array,
 	      required: true
+	    },
+	    valuePath: {
+	      type: String,
+	      'default': 'value'
+	    },
+	    textPath: {
+	      type: String,
+	      'default': 'text'
 	    }
 	  },
 	  data: function data() {
@@ -521,15 +525,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  created: function created() {
-	    if (this.multiple) {
-	      this.selected = this.options.filter(function (option) {
-	        return option.selected;
-	      });
-	    } else {
-	      this.selected = this.options.find(function (option) {
-	        return option.selected;
-	      }) || this.options[0];
-	    }
+	    var option = this.options.find(function (option) {
+	      return option.selected;
+	    }) || this.options[0];
+	    this.selected = option[this.valuePath];
 	  }
 	};
 	module.exports = exports['default'];
@@ -546,9 +545,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      expression: "selected"
 	    }],
 	    staticClass: "custom-select",
-	    attrs: {
-	      "multiple": multiple
-	    },
 	    on: {
 	      "change": function($event) {
 	        selected = Array.prototype.filter.call($event.target.options, function(o) {
@@ -558,12 +554,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        })[0]
 	      }
 	    }
-	  }, [(options) && _l((options), function(option, index) {
+	  }, [(options) && _l((options), function(option) {
 	    return _h('option', {
 	      domProps: {
-	        "value": option
+	        "value": option[valuePath]
 	      }
-	    }, ["\n    " + _s(option.text) + "\n  "])
+	    }, ["\n    " + _s(option[textPath]) + "\n  "])
 	  })])
 	}},staticRenderFns: []}
 

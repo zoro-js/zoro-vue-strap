@@ -1,7 +1,7 @@
 <template lang='html'>
-  <select class='custom-select' :multiple='multiple' v-model='selected'>
-    <option v-for='(option, index) of options' :value='option'>
-      {{option.text}}
+  <select class='custom-select' v-model='selected'>
+    <option v-for='option in options' :value='option[valuePath]'>
+      {{option[textPath]}}
     </option>
   </select>
 </template>
@@ -10,13 +10,17 @@
 export default {
   props: {
     value: null,
-    multiple: {
-      type: Boolean,
-      default: false
-    },
     options: {
       type: Array,
       required: true
+    },
+    valuePath: {
+      type: String,
+      default: 'value'
+    },
+    textPath: {
+      type: String,
+      default: 'text'
     }
   },
   data () {
@@ -31,11 +35,8 @@ export default {
     }
   },
   created () {
-    if (this.multiple) {
-      this.selected = this.options.filter(option => option.selected)
-    } else {
-      this.selected = this.options.find(option => option.selected) || this.options[0]
-    }
+    const option = this.options.find(option => option.selected) || this.options[0]
+    this.selected = option[this.valuePath]
   }
 }
 </script>
