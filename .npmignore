@@ -1,3 +1,5 @@
 **/*
+!dist/vue-strap.js
+!dist/vue-strap.js.map
 !dist/vue-strap.min.*
 !src/**/*
