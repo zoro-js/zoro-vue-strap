@@ -29,14 +29,20 @@ export default {
     }
   },
   watch: {
-    value () {},
+    value () {
+      this.selected = this.value
+    },
     selected () {
       this.$emit('input', this.selected)
     }
   },
   created () {
-    const option = this.options.find(option => option.selected) || this.options[0]
-    this.selected = option[this.valuePath]
+    if (this.value) {
+      this.selected = this.value
+    } else {
+      const option = this.options.find(option => option.selected) || this.options[0]
+      this.selected = option[this.valuePath]
+    }
   }
 }
 </script>

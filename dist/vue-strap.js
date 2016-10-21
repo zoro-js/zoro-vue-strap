@@ -519,16 +519,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  watch: {
-	    value: function value() {},
+	    value: function value() {
+	      this.selected = this.value;
+	    },
 	    selected: function selected() {
 	      this.$emit('input', this.selected);
 	    }
 	  },
 	  created: function created() {
-	    var option = this.options.find(function (option) {
-	      return option.selected;
-	    }) || this.options[0];
-	    this.selected = option[this.valuePath];
+	    if (this.value) {
+	      this.selected = this.value;
+	    } else {
+	      var option = this.options.find(function (option) {
+	        return option.selected;
+	      }) || this.options[0];
+	      this.selected = option[this.valuePath];
+	    }
 	  }
 	};
 	module.exports = exports['default'];
