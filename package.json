@@ -51,8 +51,8 @@
   "homepage": "https://github.com/zoro-js/zoro-vue-strap#readme",
   "devDependencies": {
     "bootstrap": "^4.0.0-alpha.4",
-    "zoro-kit": "0.0.43",
-    "zoro-kit-vue": "0.0.4"
+    "zoro-kit": "0.0.65",
+    "zoro-kit-vue": "0.0.12"
   },
   "dependencies": {
     "date-fns": "^1.6.0"
